@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --primary-red: #ED1C24;
+}
+
+html.dark,
+body.dark {
+  --background: #030712;
+  --foreground: #ffffff;
+}
+
+@theme {
+  --font-display: var(--font-orbitron), sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-matrix-red: #ED1C24;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-display {
+  font-family: var(--font-orbitron), sans-serif;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(16px) rotate(-4deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-reverse 7s ease-in-out 1s infinite;
+}
+
+.animate-float-slow {
+  animation: float 9s ease-in-out 2s infinite;
+}
+
+/* Lenis Smooth Scroll CSS Rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-prevent {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom MATRIX Red Scrollbar with Theme Toggle Support */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+html.dark ::-webkit-scrollbar-track,
+body.dark ::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ED1C24;
+  border-radius: 9999px;
+  border: 2px solid #ffffff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+html.dark ::-webkit-scrollbar-thumb,
+body.dark ::-webkit-scrollbar-thumb {
+  background: #ED1C24;
+  border-color: #030712;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d61920;
+}
+
+/* Firefox Scrollbar Styling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ED1C24 #ffffff;
+}
+
+html.dark {
+  scrollbar-width: thin;
+  scrollbar-color: #ED1C24 #030712;
+}
